@@ -1,4 +1,4 @@
-name: base
+name: test
 channels:
   - anaconda
   - menpo
@@ -187,6 +187,7 @@ dependencies:
   - pexpect=4.5.0=py36_0
   - pickleshare=0.7.4=py36h63277f8_0
   - pillow=5.1.0=py36h3deb7b8_0
+  - pip
   - pixman=0.34.0=hceecf20_3
   - pkginfo=1.4.2=py36_1
   - pluggy=0.6.0=py36hb689045_0
@@ -307,5 +308,3 @@ dependencies:
     - torchsummary==1.5.1
     - torchvision==0.4.0
     - tqdm==4.35.0
-prefix: /home/aaa/anaconda3
-

@@ -47,15 +47,20 @@ if __name__ == '__main__':
                                  split = 'test',transform = transform)
     
     testloader = DataLoader(test_set, batch_size = args.bs,
-                             shuffle=False, num_workers=2)
+                             shuffle=False, num_workers=0)
     counter=0
     
     os.makedirs('test/labels/',exist_ok=True)
     os.makedirs('test/output/',exist_ok=True)
     os.makedirs('test/mask/',exist_ok=True)
+	
+    with torch.no_grad():
+        for i, batchdata in tqdm(enumerate(testloader),total=len(testloader)):
+            img,labels,index,x,y= batchdata
     
     with torch.no_grad():
         for i, batchdata in tqdm(enumerate(testloader),total=len(testloader)):
+        #for batchdata in testloader:
             img,labels,index,x,y= batchdata
             data = img.to(device)       
             output = model(data)            
@@ -74,4 +79,5 @@ if __name__ == '__main__':
                 combine = np.hstack([img_orig,pred_img])
                 plt.imsave('test/mask/{}.jpg'.format(index[j]),combine)
 
+	
     os.rename('test',args.save)
